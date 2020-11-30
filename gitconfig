@@ -1,0 +1,43 @@
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
+
+[color "branch"]
+  current = green
+  remote = yellow
+
+[core]
+  editor = code --wait
+
+[alias]
+  co = checkout
+  st = status -sb
+  br = branch
+  ci = commit
+  fo = fetch origin
+  unstage = reset HEAD --
+  d = !git --no-pager diff
+  stat = !git --no-pager diff --stat
+
+  # http://www.jukie.net/bart/blog/pimping-out-git-log
+  lg = log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
+
+  m = checkout master
+
+[commit]
+	# https://help.github.com/articles/signing-commits-using-gpg/
+	gpgsign = true
+
+[help]
+  # Automatically correct and execute mistyped commands.
+  autocorrect = 1
+
+[push]
+  # https://git-scm.com/docs/git-config#git-config-pushdefault
+	default = simple
+
+[init]
+  defaultBranch = main
