@@ -10,7 +10,7 @@ xcode-select --install
 brew install git
 brew install wget
 brew install jq
-brew install imagemagick --with-webp
+brew install imagemagick
 brew install tree
 brew install yarn # will also install node
 brew install watchman
