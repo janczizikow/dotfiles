@@ -1,20 +1,23 @@
+#!/usr/bin/env bash
+
+# rename a `target` file to `target.backup` if the 'real' `target` file exists (not a symlink)
 backup() {
   target=$1
-  if [ -e "$target" ]; then           # Does the config file already exist?
-    if [ ! -L "$target" ]; then       # as a pure file?
-      mv "$target" "$target.backup"   # Then backup it
+  if [ -e "$target" ]; then
+    if [ ! -L "$target" ]; then
+      mv "$target" "$target.backup"
       echo "-----> Moved your old $target config file to $target.backup"
     fi
   fi
 }
 
-#!/bin/zsh
+# For the files in the current folder (except for `*.sh` and `README.md`):
+# backup `~/.$name` and symlink `$name` to `~/.$name`
 for name in *; do
   if [ ! -d "$name" ]; then
     target="$HOME/.$name"
-    if [[ ! "$name" =~ '\.sh$' ]] && [ "$name" != 'README.md' ]; then
-      backup $target
-
+    if [[ ! "$name" =~ \.sh$ ]] && [ "$name" != 'README.md' ]; then
+      backup "$target"
       if [ ! -e "$target" ]; then
         echo "-----> Symlinking your new $target"
         ln -s "$PWD/$name" "$target"
@@ -23,8 +26,8 @@ for name in *; do
   fi
 done
 
-# zsh plugins
-CURRENT_DIR=`pwd`
+# install zsh-syntax-highlighting plugin
+CURRENT_DIR=$(pwd)
 ZSH_PLUGINS_DIR="$HOME/.oh-my-zsh/custom/plugins"
 mkdir -p "$ZSH_PLUGINS_DIR" && cd "$ZSH_PLUGINS_DIR"
 if [ ! -d "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting" ]; then
@@ -33,7 +36,7 @@ if [ ! -d "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting" ]; then
 fi
 cd "$CURRENT_DIR"
 
-setopt nocasematch
-zsh ~/.zshrc
+# reload ZSH config
+exec zsh
 
 echo "👌  All done!"
