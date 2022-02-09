@@ -6,19 +6,9 @@
 xcode-select --install
 
 # Brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-brew install git
-brew install wget
-brew install jq
-brew install imagemagick
-brew install tree
-brew install yarn # will also install node
-brew install watchman
-brew install rbenv
-brew install openssl
-brew install postgresql
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew bundle
 brew services start postgresql
-brew install redis
 brew services start redis
 
 # zsh
@@ -43,7 +33,6 @@ git config --global user.name <NAME_HERE>
 # Save screenshots to ~/Pictures/Screenshots
 defaults write com.apple.screencapture location "${HOME}/Pictures/Screenshots"
 ```
-
 
 ## Ruby
 
