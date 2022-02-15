@@ -7,9 +7,7 @@ xcode-select --install
 
 # Brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew bundle
-brew services start postgresql
-brew services start redis
+brew install git
 
 # zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -20,6 +18,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # clone dotfiles and install dotfiles in preferred directory
 git clone git@github.com:janczizikow/dotfiles.git
 zsh install.sh
+brew bundle
+brew services start postgresql
+brew services start redis
 
 # setup git
 git config --global user.email <EMAIL_HERE>

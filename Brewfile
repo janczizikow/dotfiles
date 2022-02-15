@@ -3,12 +3,14 @@ brew 'wget'
 brew 'jq'
 brew 'imagemagick'
 brew 'tree'
-brew 'yarn' # will also install node
+brew 'node'
+brew 'yarn'
 brew 'watchman'
 brew 'rbenv'
 brew 'openssl'
 brew 'postgresql'
 brew 'redis'
+brew 'shellcheck'
 
 # casks
 cask 'discord'
